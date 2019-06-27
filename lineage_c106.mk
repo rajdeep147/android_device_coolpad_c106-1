@@ -17,20 +17,12 @@
 # Inherit device configuration
 $(call inherit-product, device/coolpad/c106/full_c106.mk)
 
-# Boot animation
-TARGET_BOOT_ANIMATION_RES := 1080
-
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/revengeos/config/common.mk)
-$(call inherit-product, vendor/revengeos/config/gsm.mk)
-
-# Inherit some common AOSP stuff.
-IS_PHONE := true
-TARGET_GAPPS_ARCH := arm64
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
-PRODUCT_NAME := revengeos_c106
+PRODUCT_NAME := lineage_c106
 PRODUCT_BRAND := LeEco
 PRODUCT_MANUFACTURER := LeMobile
 
