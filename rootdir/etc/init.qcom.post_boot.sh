@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 # Copyright (c) 2012-2013, 2016-2017, The Linux Foundation. All rights reserved.
-#
+# mod by <<VenoM>>
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #     * Redistributions of source code must retain the above copyright
@@ -131,28 +131,54 @@ done
 # enable governor for power cluster
 echo 1 > /sys/devices/system/cpu/cpu0/online
 echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-echo 80 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+echo 99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
 echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 400000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-echo 59000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 1305600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/boostpulse_duration
+echo "50000 1017600:50000 1190400:100000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 806400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-echo "1 400000:60 691200:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+echo "1 400000:60 691200:80 1017600:90 1190400:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 # enable governor for perf cluster
 echo 1 > /sys/devices/system/cpu/cpu4/online
 echo "interactive" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-echo 85 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
+echo 99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
 echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/sampling_down_factor
 echo 400000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-echo 60000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
-echo 1113600 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
-echo "19000 1113600:39000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
-echo "85 1113600:90 1612800:80" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+echo 1612800 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
+echo 883200 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+echo "50000 940800:50000 998400:50000 1113600:50000 1190400:100000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
+echo "1 400000:70 940800:80 1113600:90 1190400:95" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+
+# Enable core control
+insmod /system/lib/modules/core_ctl.ko
+#for 8976
+             
+echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
+echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/max_cpus
+echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
+echo 50 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
+echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
+echo 2 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/max_cpus
+echo 60 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
+echo 50 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
+echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
+echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
+
+# HMP scheduler (big.Little cluster related) settings
+echo 35 > /proc/sys/kernel/sched_upmigrate
+echo 23 > /proc/sys/kernel/sched_downmigrate
+
+# disable thermal & BCL core_control to update interactive gov settings
+echo 0 > /sys/module/msm_thermal/core_control/enabled
 
 # HMP Task packing settings for 8976
 echo 30 > /proc/sys/kernel/sched_small_task
