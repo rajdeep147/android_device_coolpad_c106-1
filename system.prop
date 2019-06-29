@@ -242,3 +242,6 @@ persist.camera.tnr.video=1
 camera.tnr.video=1
 ro.camera.notify_nfc=1
 camera.notify_nfc=1
+
+# Fix fingerprint
+ro.fingerprint.cleanup.unused=false

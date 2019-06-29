@@ -264,7 +264,7 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
-include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
@@ -297,3 +297,7 @@ TARGET_OTA_ASSERT_DEVICE := c106,C106,c103,cool_c1
 
 # inherit from the proprietary version
 -include vendor/coolpad/c106/BoardConfigVendor.mk
+
+# Dexpreopt
+WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true

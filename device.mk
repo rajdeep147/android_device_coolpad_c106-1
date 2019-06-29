@@ -185,10 +185,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ad_calib.cfg:system/etc/ad_calib.cfg
 
-# Doze mode
-PRODUCT_PACKAGES += \
-    Doze
-
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
@@ -274,7 +270,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LeEcoParts \
     LePref
-
 # LeEco IR remote
 PRODUCT_PACKAGES += \
     LeRemote
