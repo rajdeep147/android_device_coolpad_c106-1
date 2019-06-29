@@ -19,6 +19,9 @@ vendor/lib/rfsa/adsp/libexternal_dog_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
+# FIX camera ampir-nn
+vendor/lib/hw/camera.msm8952.so
+
 # ANT+
 lib/com.qualcomm.qti.ant@1.0.so
 -lib/libantradio.so
@@ -52,6 +55,15 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 
+# Audiosphere - from Xiaomi
+lib/soundfx/libasphere.so
+lib64/soundfx/libasphere.so
+
+# Audio - Dirac - from Xiaomi
+vendor/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
+vendor/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
+vendor/etc/diracmobile.config|d781cd6798a7481a8f7128d144abfb2b8794212d
+
 # Bluetooth - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|9178856dc8651b499d1b155825b6115a486ee05e
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
@@ -63,6 +75,9 @@ vendor/lib64/libbtnv.so|136dc47f7d16a841e9c6ad909753e96a41392534
 # Bluetooth ( dependencies ) - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
 vendor/lib/vendor.qti.hardware.fm@1.0.so|3c725ea0f85bf709bcf77761d707abf7660b1c4d
 vendor/lib64/vendor.qti.hardware.fm@1.0.so|dc576dfcb0bf390a106b5ed8861e7f547110cbf1
+
+# Charger
+vendor/bin/hvdcp_opti
 
 # Consumerir - from le_x10 (x850) - 7.1.1/LEXCNFN6061705181T/letv05181516
 -vendor/app/UEIQuicksetSDKLeTV/UEIQuicksetSDKLeTV.apk|5f277e31c08585ca8e79f7fda0957bd577c99c7d
@@ -197,6 +212,11 @@ vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 vendor/lib64/hw/gatekeeper.msm8952.so
 
 # GPS - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
+lib/vendor.qti.gnss@1.0.so|eddf81581610bdad45674d31e9b88eb8a9d08784
+lib/vendor.qti.gnss@1.1.so|fea7124d30c04636974dfdbe1a348ff249d897fe
+lib/vendor.qti.gnss@1.2.so|818c951a47baa82f72da4266e61e41cfef16a67c
+lib/vendor.qti.gnss@2.0.so|a559459c08f995fc9b1c92a63777058f8f1c0070
+lib/vendor.qti.gnss@2.1.so|a3554a924e9e20c02d9411a5221c19fba3374a84
 lib64/vendor.qti.gnss@1.0.so|90b465adc4542f16fbdd935d0592df73d778909b
 lib64/vendor.qti.gnss@1.1.so|1edcf36fc3afbc465e53e3b74f99fde1e952f718
 lib64/vendor.qti.gnss@1.2.so|fc002fdced5768ed97936fde007476c1e9eaabb2
@@ -301,9 +321,6 @@ vendor/lib64/hw/vulkan.msm8952.so|a442c83cc25798de78fa0336358a85c8a7daccc3
 
 # IPA
 vendor/bin/ipacm-diag
-
-# Keystore
-vendor/lib64/hw/keystore.msm8952.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8952.so
@@ -467,6 +484,7 @@ etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 vendor/bin/ATFWD-daemon
 vendor/bin/netmgrd
+vendor/bin/port-bridge|ffa232cfe4d089781669774f2e9cbd63879fdfe2
 vendor/bin/qmuxd
 vendor/bin/qti
 vendor/bin/rmt_storage
@@ -596,5 +614,6 @@ vendor/lib64/libtime_genoff.so|8f4c1f9ace6af463b241b130d6872b5d39cc7b2a
 
 # Widevine DRM - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine|9743c4ecd0fb8773795bcbfbb406f25616c04129
+vendor/bin/move_widevine_data.sh|ef619bc7798f9e3101888d73b7dda4877d69fb46
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|458dd241f5f8536eccb57f012b3eba0061736e8e
 vendor/lib64/libwvhidl.so|a3444ac0deb8144a08ba2ed1dad2f2369096c7af
