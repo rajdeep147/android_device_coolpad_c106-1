@@ -35,6 +35,6 @@
 
 # HALs
 
-/sys/remote/enable                                         u:object_r:sysfs_ir_enable:s0
+/sys/remote/enable                                    u:object_r:sysfs_ir_enable:s0
 
-/system/bin/perfservice                                     u:object_r:perfservice_exec:s0
+#/system/bin/perfservice                                     u:object_r:perfservice_exec:s0
