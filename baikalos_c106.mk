@@ -21,8 +21,8 @@ $(call inherit-product, device/coolpad/c106/full_c106.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/BaikalOS/config/common.mk)
-$(call inherit-product, vendor/BaikalOS/config/gsm.mk)
+$(call inherit-product, vendor/baikalos/config/common.mk)
+$(call inherit-product, vendor/baikalos/config/gsm.mk)
 
 # Inherit some common AOSP stuff.
 IS_PHONE := true
