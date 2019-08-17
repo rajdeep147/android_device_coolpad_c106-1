@@ -1,1 +1,1 @@
-add_lunch_combo revengeos_c106-userdebug
+add_lunch_combo baikalos_c106-userdebug
